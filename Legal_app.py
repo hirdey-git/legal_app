@@ -1,13 +1,14 @@
 import streamlit as st
 from dotenv import load_dotenv
 from openai import OpenAI
-import os
+import re
+
 
 # Load environment variables
 load_dotenv()
 
 # Initialize OpenAI client
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"] if "OPENAI_API_KEY" in st.secrets else os.getenv("OPENAI_API_KEY"))
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 # Build structured legal prompt
 def build_legal_prompt(jurisdiction, area_of_law, user_role, user_question):
